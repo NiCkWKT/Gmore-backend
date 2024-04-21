@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "found": 179,
+    "returned": 3,
+    "limit": 3,
+    "page": 1
+  },
+  "data": [
+    {
+      "uuid": "e0615857-e978-4955-ab0c-196ff38c91ac",
+      "title": "Why a 3-million-year-old lizard species in Arizona has virtually disappeared",
+      "description": "A report from the United Nations determined that 1 million species are threatened with extinction. Dr. John Wiens from the University of Arizona believes that n...",
+      "keywords": "Climate Change, United Nations, Global warming, CBS",
+      "snippet": "Why a 3-million-year-old lizard species in Arizona has virtually disappeared A report from the United Nations determined that 1 million species are threatened w...",
+      "url": "https://www.cbsnews.com/video/why-a-3-million-year-old-lizard-species-in-arizona-has-virtually-disappeared/",
+      "image_url": "https://assets3.cbsnewsstatic.com/hub/i/r/2024/04/19/298c8507-aa89-44b5-816f-7ec8b98d03d5/thumbnail/1200x630/70a96a79576f62c0ffb1cd41259a175e/0419-cmo-climateextinction-schecter-mid-2848737-640x360.jpg?v=55c0f85ebcd2b956528d9c6f5a7e8871",
+      "language": "en",
+      "published_at": "2024-04-19T13:15:50.000000Z",
+      "source": "cbsnews.com",
+      "categories": ["science"],
+      "relevance_score": null,
+      "locale": "us"
+    },
+    {
+      "uuid": "c1504574-b404-40d0-a0dc-b8668bf2d33e",
+      "title": "Jawbone of U.S. Marine killed in 1951 found in boy's rock collection, experts say",
+      "description": "A human jawbone containing several teeth was linked to a former U.S. Marine who died almost 75 years ago during a military exercise in California.",
+      "keywords": "Arizona, United States Marine Corps, California",
+      "snippet": "Experts have confirmed that a human jawbone that was mysteriously discovered in a child's rock collection once belonged to a United States Marine, who died duri...",
+      "url": "https://www.cbsnews.com/news/jawbone-everett-yager-marine-captain-killed-1951-rock-collection-identified/",
+      "image_url": "https://assets1.cbsnewsstatic.com/hub/i/r/2024/04/18/dd11673f-e396-4a1f-a1d0-2b9ef9a67aaf/thumbnail/1200x630/ec0622f21f7ffb75aa0abc90dd58aaeb/us-marine-jawbone.png?v=55c0f85ebcd2b956528d9c6f5a7e8871",
+      "language": "en",
+      "published_at": "2024-04-18T12:59:00.000000Z",
+      "source": "cbsnews.com",
+      "categories": ["science"],
+      "relevance_score": null,
+      "locale": "us"
+    },
+    {
+      "uuid": "323bb805-abaf-4b56-9fe5-0df94d47fdc5",
+      "title": "Critics call out plastics industry over \"fraud of plastic recycling\"",
+      "description": "Only 5 to 6% of plastic waste produced in the U.S. is actually recycled. A new report accuses the plastics industry of a decades-long campaign to",
+      "keywords": "Recycling, Pollution, Plastics",
+      "snippet": "Jan Dell is a former chemical engineer who has spent years telling an inconvenient truth about plastics. \"So many people, they see the recyclable label, and the...",
+      "url": "https://www.cbsnews.com/news/critics-call-out-plastics-industry-over-fraud-of-plastic-recycling/",
+      "image_url": "https://assets1.cbsnewsstatic.com/hub/i/r/2024/04/13/97331a44-1468-4ae4-b933-c0eb4087a08c/thumbnail/1200x630/3ca1511d34cd7cc03ea4d12a1ed10891/plastic-recycling-1280.jpg?v=c0ff3069549804234360eec4c5e30dea",
+      "language": "en",
+      "published_at": "2024-04-14T13:53:55.000000Z",
+      "source": "cbsnews.com",
+      "categories": ["science"],
+      "relevance_score": null,
+      "locale": "us"
+    }
+  ]
+}
