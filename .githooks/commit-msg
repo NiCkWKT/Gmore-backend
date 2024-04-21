@@ -1,0 +1,19 @@
+#!/bin/bash
+
+commit_types="(chore|docs|feat|fix|perf|refactor|revert|style|test)"
+conventional_commit_regex="^${commit_types}: .+$"
+
+commit_message=$(cat "$1")
+
+if [[ "$commit_message" =~ $conventional_commit_regex ]]; then
+   exit 0
+fi
+
+echo "***********************************************************************"
+echo -e "The commit message does not meet the Conventional Commit standard"
+echo "An example of a valid message is: "
+echo "feat: add the 'remember me' button"
+echo "***********************************************************************"   
+
+echo "Commit type must in: ${commit_types}" 
+exit 1

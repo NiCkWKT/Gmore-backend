@@ -1,7 +1,7 @@
 [project]
 name = "gmore-backend"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "Gmore backend service"
 authors = [
     {name = "nickwkt", email = "nickwkt2001@gmail.com"},
 ]
