@@ -15,6 +15,8 @@ dependencies = [
     "fastapi>=0.110.2",
     "uvicorn[standard]>=0.29.0",
     "boto3>=1.34.88",
+    "loguru>=0.7.2",
+    "pydantic-settings>=2.2.1",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
@@ -23,3 +25,18 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+start = "uvicorn main:app --reload --app-dir ./app"
+format = "ruff format"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.4.2",
+]
+
+[tool.pyright]
+include = ["app", "scripts"]
+venvPath = "."
+venv = ".venv"
