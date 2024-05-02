@@ -7,14 +7,18 @@ from boto3.dynamodb.conditions import Key
 class NewsDatabase:
     def __init__(self, dyn_resource):
         self.dyn_resource = dyn_resource
-        self.table = dyn_resource.Table("gmore")
+        # self.table = dyn_resource.Table("gmore")
 
     def query_news_by_category(self, category):
         try:
-            response = self.table.query(
+            response = self.dyn_resource.query(
+                TableName="gmore",
                 IndexName="category-published_at-index",
-                KeyConditionExpression=Key("category").eq(category)
-                & Key("published_at").gte("2024-04-20T19:45:05.000000Z"),
+                ExpressionAttributeValues={
+                    ":category": {"S": category},
+                    ":ts": {"S": "2024-04-20T19:45:05.000000Z"},
+                },
+                KeyConditionExpression="category = :category AND published_at > :ts",
             )
         except ClientError as err:
             logger.error(

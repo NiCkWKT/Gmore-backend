@@ -1,3 +1,4 @@
+from mangum import Mangum
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from news.router import router as news_router
@@ -6,6 +7,7 @@ from news.router import router as news_router
 app = FastAPI(
     title="Gmore backend service", summary="Backend service for Gmore News Summary App"
 )
+handler = Mangum(app)
 
 
 origins = [
