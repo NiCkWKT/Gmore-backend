@@ -1,13 +1,14 @@
 #!/bin/bash
 # Deploy the lambda function
-# Usage: ./deploy_lambda.sh <path_to_requirements.txt> <layer_name> <function_zip_file> <function_name>
-# Example: ./deploy_lambda.sh my_function my_function.zip
+# Usage: ./deploy_lambda.sh <path_to_requirements.txt> <layer_name> <function_name>
 # Note: The zip file should be in the same directory as this script
 # Note: The function name should be the name of the lambda function
 
+set -e
+
 # Check if the function name and zip file are provided
-if [ $# -ne 4 ]; then
-    echo "Usage: ./deploy_lambda.sh <path_to_requirements.txt> <layer_name> <function_zip_file> <function_name>"
+if [ $# -ne 3 ]; then
+    echo "Usage: ./deploy_lambda.sh <path_to_requirements.txt> <layer_name> <function_name>"
     exit 1
 fi
 
@@ -41,22 +42,31 @@ LAYER_VERSION_ARN=$(aws lambda publish-layer-version \
 
 echo "Lambda layer $layer_name deployed with ARN: $LAYER_VERSION_ARN"
 
+# Package FastAPI
+echo "Packaging the lambda function..."
+cd app
+zip -r ../lambda_function.zip *
+cd ..
+
+DIR=$(pwd)
+echo "Current directory: $DIR"
+
 # Set the function name
-function_zip=$3
-function_name=$4
+function_name=$3
+function_zip="lambda_function.zip"
 
 # Deploy the lambda function
 echo "Deploying the lambda function..."
 FUNCTION_ARN=$(aws lambda create-function \
     --function-name $function_name \
     --runtime python3.12 \
-    --role arn:aws:iam::815752282021:role/LambdaToDynamoRole \
-    --handler main.handler \
+    --package-type "Zip" \
+    --handler main.handler --publish \
     --zip-file fileb://$function_zip \
     --layers $LAYER_VERSION_ARN \
+    --role arn:aws:iam::815752282021:role/LambdaToDynamoRole \
     --output text --query FunctionArn)
 
 echo "Lambda function $function_name deployed with ARN: $FUNCTION_ARN"
 echo "Done."
-
 
