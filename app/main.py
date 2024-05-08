@@ -1,7 +1,10 @@
 from mangum import Mangum
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from news.router import router as news_router
+
+load_dotenv()
 
 
 app = FastAPI(
