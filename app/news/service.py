@@ -42,3 +42,24 @@ def get_news_list(category: str) -> List[News]:
         logger.error(traceback.format_exc())
     finally:
         return news_list
+
+
+def get_news_by_id(news_id: str) -> News:
+    news_item = {}
+    try:
+        news_data = news_db.get_news_by_id(news_id)
+        logger.debug(f"News data: {news_data}")
+
+        news_item["id"] = news_data["PK"].split("#")[1]
+        news_item["title"] = news_data["title"]
+        news_item["published_at"] = news_data["published_at"]
+        news_item["image_url"] = news_data["image_url"]
+        news_item["source"] = news_data["source"]
+        news_item["source_url"] = news_data["url"]
+        news_item["category"] = news_data["category"]
+        news_item["summary"] = news_data["summary"]
+    except Exception as e:
+        logger.error(e)
+        logger.error(traceback.format_exc())
+    finally:
+        return news_item

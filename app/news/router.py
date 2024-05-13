@@ -5,7 +5,7 @@ import google.generativeai as genai
 from loguru import logger
 from fastapi import APIRouter, status, File, UploadFile
 from news.database import NewsDatabase
-from news.service import get_news_list
+from news.service import get_news_list, get_news_by_id
 from news.util import split_summary
 from PIL import Image
 
@@ -18,6 +18,26 @@ categories = ["sports", "entertainment", "tech", "business"]
 
 model = genai.GenerativeModel("gemini-pro-vision")
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+
+
+@router.get("/news/{news_id}", status_code=status.HTTP_200_OK)
+def get_single_news(news_id: str):
+    response = {"success": False, "message": "", "data": {}}
+
+    try:
+        news_item = get_news_by_id(news_id)
+
+        logger.debug(f"News data: {news_item}")
+
+        response["success"] = True
+        response["message"] = "News found"
+        response["data"] = news_item
+    except Exception as e:
+        logger.error(e)
+        logger.error(traceback.format_exc())
+        response["message"] = e
+    finally:
+        return response
 
 
 @router.get("/news", status_code=status.HTTP_200_OK)

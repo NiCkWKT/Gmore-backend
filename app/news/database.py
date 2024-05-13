@@ -26,3 +26,20 @@ class NewsDatabase:
             raise
         else:
             return response["Items"]
+
+    def get_news_by_id(self, news_id):
+        try:
+            response = self.table.query(
+                KeyConditionExpression=Key("PK").eq(f"NEWS#{news_id}")
+            )
+            logger.debug(f"Query response: {response}")
+        except ClientError as err:
+            logger.error(
+                "Couldn't get news with ID %s. Here's why: %s: %s",
+                news_id,
+                err.response["Error"]["Code"],
+                err.response["Error"]["Message"],
+            )
+            raise
+        else:
+            return response["Items"][0]
