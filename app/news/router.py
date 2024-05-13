@@ -5,7 +5,7 @@ import google.generativeai as genai
 from loguru import logger
 from fastapi import APIRouter, status, File, UploadFile
 from news.database import NewsDatabase
-from news.service import get_news_list, get_news_by_id
+from news.service import get_news_list, get_news_by_id, get_general_news
 from news.util import split_summary
 from PIL import Image
 
@@ -45,7 +45,9 @@ def get_news(category: str):
     response = {"success": False, "message": "", "data": []}
 
     try:
-        news_list = get_news_list(category)
+        news_list = (
+            get_general_news() if category == "general" else get_news_list(category)
+        )
 
         logger.debug(f"There is/are {len(news_list)} news")
         logger.debug(f"News: {news_list}")

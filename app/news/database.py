@@ -43,3 +43,16 @@ class NewsDatabase:
             raise
         else:
             return response["Items"][0]
+
+    def scan_news(self):
+        try:
+            response = self.table.scan()
+        except ClientError as err:
+            logger.error(
+                "Couldn't scan for news. Here's why: %s: %s",
+                err.response["Error"]["Code"],
+                err.response["Error"]["Message"],
+            )
+            raise
+        else:
+            return response["Items"]
